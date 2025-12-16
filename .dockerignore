@@ -1,0 +1,50 @@
+# .dockerignore
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+venv*/
+env*/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Test files
+*.test
+*.spec
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build files
+dist/
+build/
+*.egg-info/
+
+# Temp files
+*.tmp
+temp/
+uploads/  # We don't need to copy uploads folder
+kyc_results/  # Don't copy results folder
+
+# Environment
+.env
+.env.local
+.env.development
+.env.production
+
+# Docker
+Dockerfile
+docker-compose.yml

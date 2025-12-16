@@ -1,0 +1,34 @@
+# render.yaml
+services:
+  - type: web
+    name: kyc-processing-api
+    env: python
+    region: singapore # or oregon, frankfurt, etc.
+    buildCommand: |
+      pip install --no-cache-dir -r requirements.txt
+    startCommand: gunicorn -c gunicorn_config.py app:app
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: FLASK_SECRET_KEY
+        generateValue: true
+      - key: MAX_WORKERS
+        value: "2" # Lower for Render free tier
+      - key: MAX_RETRIES
+        value: "2"
+      - key: EXTRACTION_MODEL
+        value: "gemini-1.5-flash"
+      - key: VERIFICATION_MODEL
+        value: "llama-3.3-70b-versatile"
+      - key: PYTHONUNBUFFERED
+        value: "true"
+    healthCheckPath: /health
+    autoDeploy: true
+    disk:
+      name: tmp
+      mountPath: /tmp
+      sizeGB: 1
+    plan: free
+    numInstances: 1
