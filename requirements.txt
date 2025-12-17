@@ -15,7 +15,9 @@ langgraph>=0.2.0,<0.3.0
 langchain-groq>=0.2.0
 langchain-google-genai>=2.0.0
 google-generativeai>=0.8.0
-
+openai==1.51.0
+redis
+rq
 # ---- other dependencies with pinned latest-stable-ish versions (as of Dec 2025) ----
 Pillow==11.3.0
 opencv-python-headless==4.12.0.88
